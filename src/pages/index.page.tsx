@@ -9,8 +9,10 @@ import {
   FormAddTask,
   Hero,
   InfoTask,
+  ListTask,
   Tasks,
 } from './styles'
+import { Task } from '@/components/Task'
 
 export default function Home() {
   return (
@@ -41,12 +43,19 @@ export default function Home() {
             </InfoTask>
           </header>
 
-          <EmptyList>
+          {/* <EmptyList>
             <Image src={clipboardImg} alt="" />
 
             <strong>Você ainda não tem tarefas cadastradas</strong>
             <span>Crie tarefas e organize seus itens a fazer</span>
-          </EmptyList>
+          </EmptyList> */}
+
+          <ListTask>
+            <Task />
+            <Task />
+            <Task />
+            <Task />
+          </ListTask>
         </Tasks>
       </Content>
     </main>

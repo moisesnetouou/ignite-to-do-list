@@ -123,3 +123,11 @@ export const EmptyList = styled('div', {
     marginTop: '0.4rem',
   },
 })
+
+export const ListTask = styled('div', {
+  marginTop: '1.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+
+  gap: '0.75rem',
+})
