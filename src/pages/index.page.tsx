@@ -1,7 +1,16 @@
 import Image from 'next/image'
+import { PlusCircle } from 'phosphor-react'
 
 import logoImg from '@/assets/images/logo.svg'
-import { Content, FormAddTask, Hero } from './styles'
+import clipboardImg from '@/assets/images/clipboard.svg'
+import {
+  Content,
+  EmptyList,
+  FormAddTask,
+  Hero,
+  InfoTask,
+  Tasks,
+} from './styles'
 
 export default function Home() {
   return (
@@ -14,8 +23,31 @@ export default function Home() {
         <FormAddTask>
           <input type="text" placeholder="Adicione uma nova tarefa" />
 
-          <button type="button">Criar</button>
+          <button type="button">
+            Criar <PlusCircle size={18} />
+          </button>
         </FormAddTask>
+
+        <Tasks>
+          <header>
+            <InfoTask variant="blue">
+              <p>Tarefas criadas</p>
+              <mark>0</mark>
+            </InfoTask>
+
+            <InfoTask variant="purple">
+              <p>Tarefas criadas</p>
+              <mark>0</mark>
+            </InfoTask>
+          </header>
+
+          <EmptyList>
+            <Image src={clipboardImg} alt="" />
+
+            <strong>Você ainda não tem tarefas cadastradas</strong>
+            <span>Crie tarefas e organize seus itens a fazer</span>
+          </EmptyList>
+        </Tasks>
       </Content>
     </main>
   )
