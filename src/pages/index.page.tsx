@@ -13,8 +13,20 @@ import {
   Tasks,
 } from './styles'
 import { Task } from '@/components/Task'
+import { useState } from 'react'
 
 export default function Home() {
+  const [tasks, setTasks] = useState([])
+  const [newTask, setNewTask] = useState('')
+
+  function handleAddTask() {
+    console.log('task')
+
+    const currentTasks = [...tasks]
+
+    setTasks(currentTasks.push({ newTask }))
+  }
+
   return (
     <main>
       <Hero>
@@ -23,9 +35,13 @@ export default function Home() {
 
       <Content>
         <FormAddTask>
-          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <input
+            type="text"
+            placeholder="Adicione uma nova tarefa"
+            onChange={(e) => setNewTask(e.target.value)}
+          />
 
-          <button type="button">
+          <button type="button" onClick={handleAddTask}>
             Criar <PlusCircle size={18} />
           </button>
         </FormAddTask>
@@ -43,19 +59,21 @@ export default function Home() {
             </InfoTask>
           </header>
 
-          {/* <EmptyList>
-            <Image src={clipboardImg} alt="" />
+          {tasks.length <= 0 ? (
+            <EmptyList>
+              <Image src={clipboardImg} alt="" />
 
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            <span>Crie tarefas e organize seus itens a fazer</span>
-          </EmptyList> */}
-
-          <ListTask>
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-          </ListTask>
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              <span>Crie tarefas e organize seus itens a fazer</span>
+            </EmptyList>
+          ) : (
+            <ListTask>
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+            </ListTask>
+          )}
         </Tasks>
       </Content>
     </main>
